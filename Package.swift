@@ -1,10 +1,11 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 import PackageDescription
 
 let package = Package(
     name: "BitcoinKit",
     platforms: [
-        .macOS(.v10_12), .iOS(.v14)
+        .iOS(.v15),
+        .macOS(.v12)
     ],
     products: [
         .library(name: "BitcoinKit", targets: ["BitcoinKit"])

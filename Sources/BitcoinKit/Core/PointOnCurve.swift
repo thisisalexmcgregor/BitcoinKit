@@ -23,7 +23,6 @@
 //
 
 import Foundation
-import BitcoinKitPrivate
 
 public struct PointOnCurve {
 

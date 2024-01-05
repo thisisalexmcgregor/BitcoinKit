@@ -25,7 +25,6 @@
 
 import Foundation
 import CryptoSwift
-import BitcoinKitPrivate
 
 public struct Crypto {
     public static func sha1(_ data: Data) -> Data {

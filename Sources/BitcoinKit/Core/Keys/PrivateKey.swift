@@ -23,7 +23,6 @@
 //  THE SOFTWARE.
 //
 
-import BitcoinKitPrivate
 import Foundation
 
 public struct PrivateKey {

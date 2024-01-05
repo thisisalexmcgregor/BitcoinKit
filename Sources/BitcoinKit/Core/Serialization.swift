@@ -35,8 +35,7 @@ protocol BinaryConvertible {
 
 extension BinaryConvertible {
     static func +(lhs: Data, rhs: Self) -> Data {
-        var value = rhs
-        let data = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+        let data = Data(from: rhs)
         return lhs + data
     }
 
@@ -86,8 +85,10 @@ extension Data: BinaryConvertible {
 
 extension Data {
     init<T>(from value: T) {
-        var value = value
-        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
+        let value = value
+        self = withUnsafePointer(to: value) {
+            Data(buffer: UnsafeBufferPointer(start: $0, count: 1))
+        }
     }
 
     func to<T>(type: T.Type) -> T {

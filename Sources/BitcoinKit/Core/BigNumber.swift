@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BitcoinKitPrivate
 
 public struct BigNumber {
     public var int32: Int32

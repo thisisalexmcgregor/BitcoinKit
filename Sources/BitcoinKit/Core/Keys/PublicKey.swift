@@ -24,7 +24,6 @@
 //
 
 import Foundation
-import BitcoinKitPrivate
 
 public struct PublicKey {
     public let data: Data
