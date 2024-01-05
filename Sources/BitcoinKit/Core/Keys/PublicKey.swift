@@ -24,11 +24,7 @@
 //
 
 import Foundation
-#if BitcoinKitXcode
-import BitcoinKit.Private
-#else
 import BitcoinKitPrivate
-#endif
 
 public struct PublicKey {
     public let data: Data

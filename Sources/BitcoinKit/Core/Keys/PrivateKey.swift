@@ -23,12 +23,8 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-#if BitcoinKitXcode
-import BitcoinKit.Private
-#else
 import BitcoinKitPrivate
-#endif
+import Foundation
 
 public struct PrivateKey {
     @available(*, deprecated, renamed: "data")

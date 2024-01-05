@@ -7,11 +7,7 @@
 //
 
 import Foundation
-#if BitcoinKitXcode
-import BitcoinKit.Private
-#else
 import BitcoinKitPrivate
-#endif
 
 public struct BigNumber {
     public var int32: Int32

@@ -26,30 +26,21 @@ import XCTest
 @testable import BitcoinKit
 
 class BlockMessageTests: XCTestCase {
-    fileprivate func loadRawBlock(named name: String) throws -> BlockMessage {
-        let data: Data
-        #if BitcoinKitXcode
-        let url = Bundle(for: type(of: self)).url(forResource: name, withExtension: "raw")!
-        data = try Data(contentsOf: url)
-        #else
-        // find raw files if using Swift Package Manager:
-        let currentDirectoryURL = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-        let fileURL = currentDirectoryURL
-            .appendingPathComponent("TestResources", isDirectory: true)
-            .appendingPathComponent(name)
-            .appendingPathExtension("raw")
-        data = try Data(contentsOf: fileURL)
-        #endif
-
-        return BlockMessage.deserialize(data)
-    }
-
     func testComputeMerkleRoot() throws {
-        let block1 = try loadRawBlock(named: "block1")
+        let block1 = loadRawBlock(named: "block1", in: .module)!
         XCTAssertEqual(block1.computeMerkleRoot(), block1.merkleRoot)
 
-        let block413567 = try loadRawBlock(named: "block413567")
+        let block413567 = loadRawBlock(named: "block413567", in: .module)!
         XCTAssertEqual(block413567.computeMerkleRoot(), block413567.merkleRoot)
     }
-    
+
+    private func loadRawBlock(named filename: String, in bundle: Bundle) -> BlockMessage? {
+        guard let file = bundle.url(forResource: filename, withExtension: "raw") else {
+            return nil
+        }
+        guard let data = try? Data(contentsOf: file) else {
+            return nil
+        }
+        return BlockMessage.deserialize(data)
+    }
 }

@@ -32,11 +32,11 @@ class TransactionBuilderTests: XCTestCase {
         
         // TransactionOutput
         let prevTxLockScript = Data(hex: "76a9142a539adfd7aefcc02e0196b4ccf76aea88a1f47088ac")
-        let prevTxOutput = TransactionOutput(value: 169_012_961, lockingScript: prevTxLockScript!)
+        let prevTxOutput = TransactionOutput(value: 169_012_961, lockingScript: prevTxLockScript)
         
         // TransactionOutpoint
         let prevTxID = "1524ca4eeb9066b4765effd472bc9e869240c4ecb5c1ee0edb40f8b666088231"
-        let prevTxHash = Data(Data(hex: prevTxID)!.reversed())
+        let prevTxHash = Data(Data(hex: prevTxID).reversed())
         let prevTxOutPoint = TransactionOutPoint(hash: prevTxHash, index: 1)
         
         // UnspentTransaction
@@ -48,7 +48,7 @@ class TransactionBuilderTests: XCTestCase {
         let changeAddress = privKey.publicKey().toBitcoinAddress()
         let tx: Transaction = TransactionBuilder.build(from: plan, toAddress: toAddress, changeAddress: changeAddress)
         
-        let expectedSerializedTx: Data = Data(hex: "010000000131820866b6f840db0eeec1b5ecc44092869ebc72d4ff5e76b46690eb4eca24150100000000ffffffff0280f0fa02000000001976a9149f9a7abd600c0caa03983a77c8c3df8e062cb2fa88ace1677f06000000001976a9142a539adfd7aefcc02e0196b4ccf76aea88a1f47088ac00000000")!
+        let expectedSerializedTx: Data = Data(hex: "010000000131820866b6f840db0eeec1b5ecc44092869ebc72d4ff5e76b46690eb4eca24150100000000ffffffff0280f0fa02000000001976a9149f9a7abd600c0caa03983a77c8c3df8e062cb2fa88ace1677f06000000001976a9142a539adfd7aefcc02e0196b4ccf76aea88a1f47088ac00000000")
         XCTAssertEqual(tx.serialized().hex, expectedSerializedTx.hex)
         // TODO: signature hash test
 //        let expectedSignatureHash: Data = Data(hex: "fd2f20da1c28b008abcce8a8ac7e1a7687fc944e001a24fc3aacb6a7570a3d0f")!
@@ -62,11 +62,11 @@ class TransactionBuilderTests: XCTestCase {
         
         // TransactionOutput
         let prevTxLockScript = Data(hex: "76a914aff1e0789e5fe316b729577665aa0a04d5b0f8c788ac")
-        let prevTxOutput = TransactionOutput(value: 5151, lockingScript: prevTxLockScript!)
+        let prevTxOutput = TransactionOutput(value: 5151, lockingScript: prevTxLockScript)
         
         // TransactionOutpoint
         let prevTxID = "050d00e2e18ef13969606f1ceee290d3f49bd940684ce39898159352952b8ce2"
-        let prevTxHash = Data(Data(hex: prevTxID)!.reversed())
+        let prevTxHash = Data(Data(hex: prevTxID).reversed())
         let prevTxOutPoint = TransactionOutPoint(hash: prevTxHash, index: 2)
         
         // UnspentTransaction
@@ -76,7 +76,7 @@ class TransactionBuilderTests: XCTestCase {
         let toAddress = try! BitcoinAddress(cashaddr: "bitcoincash:qpmfhhledgp0jy66r5vmwjwmdfu0up7ujqcp07ha9v")
         let changeAddress = try! BitcoinAddress(cashaddr: "bitcoincash:qz0q3xmg38sr94rw8wg45vujah7kzma3cskxymnw06")
         let tx = TransactionBuilder.build(from: plan, toAddress: toAddress, changeAddress: changeAddress)
-        let expectedSerializedTx: Data = Data(hex: "0100000001e28c2b955293159898e34c6840d99bf4d390e2ee1c6f606939f18ee1e2000d050200000000ffffffff0258020000000000001976a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ace5100000000000001976a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac00000000")!
+        let expectedSerializedTx: Data = Data(hex: "0100000001e28c2b955293159898e34c6840d99bf4d390e2ee1c6f606939f18ee1e2000d050200000000ffffffff0258020000000000001976a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ace5100000000000001976a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac00000000")
         XCTAssertEqual(tx.serialized().hex, expectedSerializedTx.hex)
         // TODO: SignatureHash test
 //        let expectedSignatureHash: Data = Data(hex: "1136d4975aee4ff6ccf0b8a9c640532f563b48d9856fdc9682c37a071702937c")!
