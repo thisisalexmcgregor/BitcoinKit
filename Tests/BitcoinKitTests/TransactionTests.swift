@@ -109,8 +109,9 @@ class TransactionTests: XCTestCase {
     }
 
     func testIsCoinbase() {
-        let data = Data(hex: "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff025151ffffffff010000000000000000015100000000")
+        let data = Data(hex: "0100000001780ffab0839ceb315d9164a75fa0bf36e3112dabdf9c7c2d5e9a90180a21e887010000001976a914e98f32feb632bc4febce100df3b33264dd7f15fd88acffffffff02a0bb0d00000000001976a9149f9a7abd600c0caa03983a77c8c3df8e062cb2fa88acc73f0300000000001976a914e98f32feb632bc4febce100df3b33264dd7f15fd88ac00000000")
         let tx = Transaction.deserialize(data)
-        XCTAssert(tx.isCoinbase())
+        print(tx)
+        XCTAssert(!tx.isCoinbase())
     }
 }

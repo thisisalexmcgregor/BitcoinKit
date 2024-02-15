@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMajor(from: "1.5.1")),
-        .package(url: "https://github.com/Boilertalk/secp256k1.swift", .upToNextMinor(from: "0.1.6"))
+        .package(url: "https://github.com/Boilertalk/secp256k1.swift", .upToNextMinor(from: "0.1.7"))
     ],
     targets: [
         .target(
@@ -20,7 +20,8 @@ let package = Package(
             dependencies: [
                 .product(name: "CryptoSwift", package: "CryptoSwift"),
                 .product(name: "secp256k1", package: "secp256k1.swift")
-            ]
+            ],
+            path: "Sources/BitcoinKit"
         ),
         .testTarget(
             name: "BitcoinKitTests",
@@ -32,6 +33,5 @@ let package = Package(
                 .copy("Resources/block413567.raw")
             ]
         )
-    ],
-    swiftLanguageVersions: [.v5]
+    ]
 )
