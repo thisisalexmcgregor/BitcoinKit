@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMajor(from: "1.5.1")),
-        .package(url: "https://github.com/Boilertalk/secp256k1.swift", .upToNextMinor(from: "0.1.7"))
+        .package(url: "https://github.com/GigaBitcoin/secp256k1.swift", .upToNextMinor(from: "0.16.0"))
     ],
     targets: [
         .target(
